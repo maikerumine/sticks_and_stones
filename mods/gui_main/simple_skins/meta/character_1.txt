@@ -1,0 +1,4 @@
+name = "Hobo",
+author = "Minetestian",
+description = "Hobo8Homeless_person_by_Minetestian",
+comment = "Sam Ain't Minecraft",

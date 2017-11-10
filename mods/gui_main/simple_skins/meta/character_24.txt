@@ -1,0 +1,2 @@
+name = "npc_trader_from_mobf",
+author = "lovehart",
