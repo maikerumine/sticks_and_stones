@@ -38,7 +38,7 @@ minetest.register_node("default:dirt_with_leaves_1", {
 		"default_dirt.png^woodsoils_ground_cover_side.png"},
 	is_ground_content = true,
 	groups = {
-		crumbly=3,
+		crumbly=2,
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
@@ -56,7 +56,7 @@ minetest.register_node("default:dirt_with_leaves_2", {
 		"default_dirt.png^woodsoils_ground_side.png"},
 	is_ground_content = true,
 	groups = {
-		crumbly=3,
+		crumbly=2,
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
@@ -74,7 +74,7 @@ minetest.register_node("default:grass_with_leaves_1", {
 		"default_dirt.png^default_grass_side.png^woodsoils_ground_cover_side2.png"},
 	is_ground_content = true,
 	groups = {
-		crumbly=3,
+		crumbly=2,
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
@@ -92,7 +92,7 @@ minetest.register_node("default:grass_with_leaves_2", {
 		"default_dirt.png^default_grass_side.png^woodsoils_ground_cover_side.png"},
 	is_ground_content = true,
 	groups = {
-		crumbly=3,
+		crumbly=2,
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},

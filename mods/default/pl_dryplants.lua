@@ -111,7 +111,7 @@ local function sickle_on_use(itemstack, user, pointed_thing, uses)
 end
 -- the tool
 minetest.register_tool("default:sickle", {
-	description = "Sickle",
+	description = "Sickle -Used for quick collecting of grasses-",
 	inventory_image = "dryplants_sickle.png",
 	on_use = function(itemstack, user, pointed_thing)
 		return sickle_on_use(itemstack, user, pointed_thing, 220)
@@ -133,7 +133,7 @@ minetest.register_node("default:grass", {
 	    type = "fixed",
         fixed = {-0.5   , -0.5   , -0.5   ,   0.5   , -0.4375,  0.5   },
     },
-	groups = {snappy=3, flammable=2},
+	groups = {snappy=3, flammable=2, plant_fiber=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -164,7 +164,7 @@ minetest.register_node("default:hay", {
 	    type = "fixed",
         fixed = {-0.5   , -0.5   , -0.5   ,   0.5   , -0.4375,  0.5   },
     },
-	groups = {snappy=3, flammable=2},
+	groups = {snappy=3, flammable=2, plant_fiber=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -176,7 +176,7 @@ minetest.register_node("default:grass_short", {
 	tiles = {"default_grass.png^dryplants_grass_short.png", "default_dirt.png", "default_dirt.png^default_grass_side.png^dryplants_grass_short_side.png"},
 	is_ground_content = true,
 	--groups = {crumbly=3,soil=1,not_in_creative_inventory=1},
-	groups = {crumbly=3,soil=1, falling_node = 1},
+	groups = {crumbly=2,soil=1, falling_node = 1},
 	--drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
@@ -266,7 +266,7 @@ if minetest.get_modpath("flint") ~= nil then
 		recipe = {
 			{"flint:flintstone","default:glue"},
 			{"", "default:stick"},
-			{"default:stick",""}
+			{"default:handle_short",""}
 		}
 	})
 end
@@ -276,7 +276,7 @@ if minetest.get_modpath("stoneage") ~= nil then
 		recipe = {
 			{"stoneage:silex","default:glue"},
 			{"", "default:stick"},
-			{"default:stick",""}
+			{"default:handle_short",""}
 		}
 	})
 end
@@ -641,6 +641,7 @@ minetest.register_node("default:juncus_02", {
 		flammable=2,
 		attached_node=1,
 		flora=1,
+		plant_fiber = 1,
 		not_in_creative_inventory=1, dig_by_water = 1
 	},
 	sounds = default.node_sound_leaves_defaults(),

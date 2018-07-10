@@ -58,6 +58,7 @@ local furnace_receipes = {
 
 	--FARMING
 	{"farming:flour", "farming:bread",      15},
+	{"farming:pumpkin", "farming:roasted_pumpkin",      15},
 	{"farming:unbaked_clay_bowl", "farming:clay_bowl",      15},
 	{"farming:uncooked_vegetable_stew", "farming:vegetable_stew",      15},
 	

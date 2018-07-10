@@ -88,7 +88,7 @@ minetest.register_node("default:moss", {
 	walkable = false,
 	node_box = {type = "fixed", fixed = flat_moss},
 	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
-	groups = {snappy = 3, flammable = 3 },
+	groups = {snappy = 3, flammable = 3, plant_fiber = 1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -107,7 +107,7 @@ minetest.register_node("default:moss_fungus", {
 	walkable = false,
 	node_box = {type = "fixed", fixed = flat_moss},
 	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
-	groups = {snappy = 3, flammable = 3 },
+	groups = {snappy = 3, flammable = 3, plant_fiber = 1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -545,7 +545,7 @@ end
 
 if Twigs_on_ground == true then
 default:register_generate_plant({
-    surface = {"default:dirt_with_grass", "default:dirt_with_rainforest_litter"},
+    surface = {"default:dirt_with_grass", "default:dirt_with_rainforest_litter", "default:dirt_with_dry_grass", "default:dirt_with_coniferous_litter",},
     max_count = Twigs_on_ground_Max_Count,
     rarity = Twigs_on_ground_Rarity,
     min_elevation = 1,

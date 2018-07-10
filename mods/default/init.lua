@@ -195,7 +195,7 @@ dofile(default_path.."/pl_poisonivy.lua")--From Plantlife mod, by Vanessa Ezekow
 dofile(default_path.."/pl_trunks.lua")--From Plantlife mod, by Vanessa Ezekowitz	--Code by Mossmanikin & Neuromancer
 dofile(default_path.."/pl_vines.lua")--From Plantlife mod, by Vanessa Ezekowitz	--Code bas080	http://forum.minetest.net/viewtopic.php?id=2344
 dofile(default_path.."/pl_youngtrees.lua")--From Plantlife mod, by Vanessa Ezekowitz
-dofile(default_path.."/nsspf.lua")--From NSSPF mod, by NPX
+--dofile(default_path.."/nsspf.lua")--From NSSPF mod, by NPX
 dofile(default_path.."/glow.lua")--From Glow mod
 
 

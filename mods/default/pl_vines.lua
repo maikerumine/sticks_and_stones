@@ -156,7 +156,7 @@ default.dig_vine = function( pos, node_name, user )
   --only dig give the vine if shears are used
   if not user then return false end
   local wielded = user:get_wielded_item()
-  if 'mobs:shears' == wielded:get_name() then
+  if 'default:tool_shears' == wielded:get_name() then
     local inv = user:get_inventory()
     if inv then
       inv:add_item("main", ItemStack( node_name ))
@@ -177,7 +177,7 @@ minetest.register_node("default:rope_block", {
     "default_wood.png^vines_rope.png",
     "default_wood.png^vines_rope.png",
   },
-  groups = { flammable=2, choppy=2, oddly_breakable_by_hand=1 },
+  groups = { flammable=2, choppy=2, oddly_breakable_by_hand=1, plant_fiber=1 },
   after_place_node = function(pos)
     local p = {x=pos.x, y=pos.y-1, z=pos.z}
     local n = minetest.get_node(p)
@@ -359,7 +359,7 @@ default.register_vine( 'willow', {
 
 
 default.recipes['rope_block'] = {
-  {'', 'default:wood', ''},
+  {'default:iron_hardware', 'default:wood', 'default:iron_hardware'},
   {'', 'group:vines', ''},
   {'', 'group:vines', ''}
 }
@@ -373,7 +373,7 @@ default.recipes['tool_shears'] = {
 
 
 minetest.register_tool("default:tool_shears", {
-  description = "Shears",
+  description = "Shears -Only good for vines-",
   inventory_image = "vines_shears.png",
   wield_image = "vines_shears.png",
   stack_max = 1,
@@ -392,7 +392,7 @@ tool_capabilities = {
 		local item = clicker:get_wielded_item()
 
 
-		if item:get_name() == default.shears then
+		if item:get_name() == default.tool_shears then
 			
 			local pos = node:getpos()
 			minetest.sound_play("shears", {pos = pos})
@@ -410,7 +410,7 @@ tool_capabilities = {
 
 	end,
 	
-	]]
+]]	
 })
   
   

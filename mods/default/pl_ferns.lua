@@ -253,6 +253,8 @@ if default.config.lady_ferns_near_tree == true then
 	default:register_generate_plant({ -- near trees (woodlands)
 		surface = {
 			"default:dirt_with_grass",
+			"default:dirt_with_rainforest_litter",
+			"default:dirt_with_coniferous_litter",
 			"default:mossycobble",
 			"default:desert_sand",
 			"default:sand",

@@ -126,11 +126,13 @@ minetest.register_node("default:lights", {
 	--
 		node_box = {
 		type = "fixed",
-		fixed = {-1/14, -1/12, -1/14, 1/14, 1/12, 1/14},
+		--fixed = {-1/14, -1/12, -1/14, 1/14, 1/12, 1/14},
+		fixed = {0.1, 0.1,0.1, 0.1, 0.1,0.1},
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = {-1/4, -1/2, -1/4, 1/4, 1/2, 1/4},
+		--fixed = {-1/4, -1/2, -1/4, 1/4, 1/2, 1/4},
+		fixed = {0.1, 0.1,0.1, 0.1, 0.1,0.1},
 	},
 	
 	--[[
@@ -140,7 +142,7 @@ minetest.register_node("default:lights", {
 	},
 	]]
 })
-
+--[[
 minetest.register_abm({
 	nodenames = {"default:lights","default:torch"},
 	interval = 360.0,
@@ -153,3 +155,18 @@ minetest.register_abm({
 			return
 	end,
 })
+
+]]
+minetest.register_abm({
+	nodenames = {"default:lights","default:invis"},
+	interval = 360.0,
+	chance = 1,
+	--drop = "default:steel_ingot 4",
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		local meta = minetest.get_meta(pos)
+			meta:set_string("infotext","Forbidden item abm.")
+			hacky_swap_node(pos,"default:invis")
+			return
+	end,
+})	
+	

@@ -44,7 +44,7 @@ minetest.register_node("default:trail_trail", {
 minetest.register_node("default:dirt_trail", {
 	description = "Dirt With Footprint",
 	tiles = {"default_dirt.png^default_footprint.png", "default_dirt.png"},
-	groups = {crumbly = 3, soil = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults(),
 })
@@ -54,7 +54,7 @@ minetest.register_node("default:dirt_with_grass_trail", {
 	tiles = {"default_grass.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 		tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -66,18 +66,44 @@ minetest.register_node("default:dirt_with_dry_grass_trail", {
 	tiles = {"default_dry_grass.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_dry_grass_side.png",
 		tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),
 })
 
+--==
+minetest.register_node("default:dirt_with_rainforest_litter_trail", {
+	description = "Rainforest and Footprint",
+	tiles = {"default_rainforest_litter.png^default_footprint.png", "default_dirt.png",
+		{name = "default_dirt.png^default_rainforest_litter_side.png",
+		tileable_vertical = false}},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	drop = "default:dirt",
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.4},
+	}),
+})
+
+minetest.register_node("default:dirt_with_coniferous_litter_trail", {
+	description = "Conferous Litter and Footprint",
+	tiles = {"default_coniferous_litter.png^default_footprint.png", "default_dirt.png",
+		{name = "default_dirt.png^default_coniferous_litter_side.png",
+		tileable_vertical = false}},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	drop = "default:dirt",
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.4},
+	}),
+})
+
+--==
 minetest.register_node('default:sand_with_food_trail', {
 	description = 'Sand With Food and Footprint',
 	tiles = {'default_desert_sand.png^default_footprint.png', "default_sand.png"},
 	is_ground_content = true,
-	groups = {crumbly=3, falling_node=1, sand=1, not_in_creative_inventory=1},
+	groups = {crumbly=2, falling_node=1, sand=1, not_in_creative_inventory=1},
 	sounds = default.node_sound_sand_defaults(),
 		drop = {
 		max_items = 2,
@@ -102,7 +128,7 @@ minetest.register_node("default:fall_grass_trail", {
 	tiles = {"default_grass.png^[colorize:brown:50^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^(default_grass_side.png^[colorize:brown:50)",
 		tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -119,7 +145,7 @@ minetest.register_node("default:dirt_with_snow_trail", {
 	tiles = {"default_snow.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_snow_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
@@ -129,7 +155,7 @@ minetest.register_node("default:dirt_with_snow_trail", {
 minetest.register_node("default:sand_trail", {
 	description = "Sand With Footprint",
 	tiles = {"default_sand.png^default_footprint.png", "default_sand.png"},
-	groups = {crumbly = 3, falling_node = 1, sand = 1},
+	groups = {crumbly = 2, falling_node = 1, sand = 1},
 	drop = "default:sand",
 	sounds = default.node_sound_sand_defaults(),
 })
@@ -145,7 +171,7 @@ minetest.register_node("default:desert_sand_trail", {
 minetest.register_node("default:silver_sand_trail", {
 	description = "Silver Sand With Footprint",
 	tiles = {"default_silver_sand.png^default_footprint.png", "default_silver_sand.png"},
-	groups = {crumbly = 3, falling_node = 1, sand = 1},
+	groups = {crumbly = 2, falling_node = 1, sand = 1},
 	drop = "default:silver_sand",
 	sounds = default.node_sound_sand_defaults(),
 })
@@ -165,7 +191,7 @@ minetest.register_node("default:snow_trail", {
 			{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5},
 		},
 	},
-	groups = {crumbly = 3, falling_node = 1, puts_out_fire = 1},
+	groups = {crumbly = 2, falling_node = 1, puts_out_fire = 1},
 	drop = "default:snow",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
@@ -177,7 +203,7 @@ minetest.register_node("default:snow_trail", {
 minetest.register_node("default:snowblock_trail", {
 	description = "Snow Block With Footprint",
 	tiles = {"default_snow.png^default_footprint.png", "default_snow.png"},
-	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1, falling_node = 1},
+	groups = {crumbly = 2, puts_out_fire = 1, cools_lava = 1, falling_node = 1},
 	drop = "default:snowblock",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
@@ -207,6 +233,10 @@ minetest.register_node("default:wheat_trail", {
 
 -- Globalstep function
 local dirt_table = {-- original, walked on
+  {'default:dirt_with_rainforest_litter', 'default:dirt_with_rainforest_litter_trail'},
+  {'default:dirt_with_coniferous_litter', 'default:dirt_with_coniferous_litter_trail'},
+  {'default:dirt_with_rainforest_litter_trail', 'default:grass_with_leaves_2'},
+  {'default:dirt_with_coniferous_litter_trail', 'default:dirt_with_leaves_1'},
   {'mymonths:fall_grass', 'default:fall_grass_trail'},
   {'default:sand_with_food_trail', 'default:sand_with_food_trail'},
   {'default:dirt_with_grass', 'default:dirt_with_grass_trail'},
@@ -289,14 +319,20 @@ if FOO then
 						minetest.set_node(p_groundpl, {name = "default:fall_grass_trail"})
 					elseif n_ground == "default:fall_grass_trail" then
 						minetest.set_node(p_groundpl, {name = "default:dirt_trail"})
+					--mew mt nodes
+					elseif n_ground == "default:dirt_with_rainforest_litter" then
+						minetest.set_node(p_groundpl, {name = "default:dirt_with_rainforest_litter_trail"})
+					elseif n_ground == "default:dirt_with_rainforest_litter_trail" then
+						minetest.set_node(p_groundpl, {name = "default:dirt_with_leaves_2"})
 						
-						
-						
-						
+					elseif n_ground == "default:dirt_with_coniferous_litter" then
+						minetest.set_node(p_groundpl, {name = "default:dirt_with_coniferous_litter_trail"})
+					elseif n_ground == "default:dirt_with_coniferous_litter_trail" then
+						minetest.set_node(p_groundpl, {name = "default:dirt_with_leaves_1"})
+
 						
 					elseif n_ground == "default:dirt_with_dry_grass" then
 						minetest.set_node(p_groundpl, {name = "default:dirt_with_dry_grass_trail"})
-
 
 					elseif n_ground == "default:sand_with_food" then
 						minetest.set_node(p_groundpl, {name = "default:sand_with_food_trail"})
@@ -384,6 +420,8 @@ if EROSION then
 			"default:dirt_with_grass_trail",
 			"default:fall_grass_trail",
 			"default:dirt_with_dry_grass_trail",
+			"default:dirt_with_rainforest_litter_trail",
+			"default:dirt_with_coniferous_litter_trail",
 			"default:dirt_with_snow_trail",
 			"default:sand_trail",
 			"default:sand_with_food_trail",

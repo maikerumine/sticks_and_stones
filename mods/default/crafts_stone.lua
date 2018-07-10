@@ -56,33 +56,33 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:small_rocks 3',
 	recipe = {
-		{'cavestuff:pebble_1'},
+		{'default:pebble_1'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:small_rocks 3',
 	recipe = {
-		{'cavestuff:desert_pebble_1'},
+		{'default:desert_pebble_1'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:cobble',
 	recipe = {
-		{'cavestuff:pebble_1', 'cavestuff:pebble_1', 'cavestuff:pebble_1'},
+		{'default:pebble_1', 'default:pebble_1', 'default:pebble_1'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:desert_cobble',
 	recipe = {
-		{'cavestuff:desert_pebble_1', 'cavestuff:desert_pebble_1', 'cavestuff:desert_pebble_1'},
+		{'default:desert_pebble_1', 'default:desert_pebble_1', 'default:desert_pebble_1'},
 	}
 })
 
 minetest.register_craft({
-	output = 'cavestuff:pebble_1',
+	output = 'default:pebble_1',
 	recipe = {
 		{'default:small_rocks', 'default:small_rocks', 'default:small_rocks'},
 	}
@@ -105,14 +105,14 @@ minetest.register_craft({
 })
 ]]
 minetest.register_craft({
-	output = 'cavestuff:pebble_1 3',
+	output = 'default:pebble_1 3',
 	recipe = {
 		{'default:cobble'},
 	}
 })
 
 minetest.register_craft({
-	output = 'cavestuff:desert_pebble_1 3',
+	output = 'default:desert_pebble_1 3',
 	recipe = {
 		{'default:desert_cobble'},
 	}

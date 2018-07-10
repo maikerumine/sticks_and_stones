@@ -252,7 +252,7 @@ minetest.register_node("default:tool_anvil", {
 		inv:set_stack("input", 1, input)
 
 		-- damage the hammer slightly
-		wielded:add_wear( 4500 );
+		wielded:add_wear( 3500 );  --was4500
 		puncher:set_wielded_item( wielded );
 
 		-- do not spam too much
