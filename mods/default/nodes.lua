@@ -448,7 +448,7 @@ minetest.register_node("default:dirt_with_grass", {
 	tiles = {"default_grass.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -460,7 +460,7 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 	tiles = {"default_grass.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, not_in_creative_inventory = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, not_in_creative_inventory = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -473,7 +473,7 @@ minetest.register_node("default:dirt_with_dry_grass", {
 		"default_dirt.png",
 		{name = "default_dirt.png^default_dry_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -485,7 +485,7 @@ minetest.register_node("default:dirt_with_snow", {
 	tiles = {"default_snow.png", "default_dirt.png",
 		{name = "default_dirt.png^default_snow_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, spreading_dirt_type = 1, snowy = 1, falling_node = 1},
+	groups = {crumbly = 2, spreading_dirt_type = 1, snowy = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
@@ -500,7 +500,7 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 		{name = "default_dirt.png^default_rainforest_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -515,7 +515,7 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 		{name = "default_dirt.png^default_coniferous_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -740,6 +740,11 @@ minetest.register_node("default:cave_ice", {
 --
 -- Trees
 --
+
+
+
+	
+
 minetest.register_node("default:tree_extracted", {
 	description = "Tree Extracted  --Use for fuel now",
 	--tiles = {"default_tree_top.png^[colorize:gray:75", "default_tree_top.png^[colorize:gray:75", "default_tree.png^[colorize:gray:75"},
@@ -819,6 +824,8 @@ minetest.register_node("default:sapling", {
 	end,
 })
 
+
+
 minetest.register_node("default:leaves", {
 	description = "Leaves",
 	drawtype = "allfaces_optional",
@@ -828,6 +835,7 @@ minetest.register_node("default:leaves", {
 	paramtype = "light",
 	is_ground_content = false,
 	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1, dig_by_water = 1},
+
 	drop = {
 		max_items = 1,
 		items = {
@@ -848,6 +856,8 @@ minetest.register_node("default:leaves", {
 			},
 		}
 	},
+	
+
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
@@ -978,6 +988,7 @@ minetest.register_node("default:jungleleaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 --[[
 minetest.register_node("default:junglesapling", {
@@ -1136,6 +1147,7 @@ minetest.register_node("default:pine_needles",{
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 
 minetest.register_node("default:pine_sapling", {
@@ -1218,6 +1230,7 @@ minetest.register_node("default:acacia_leaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 
 minetest.register_node("default:acacia_sapling", {
@@ -1298,6 +1311,8 @@ minetest.register_node("default:aspen_leaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+	
+
 })
 
 minetest.register_node("default:aspen_sapling", {
@@ -1336,9 +1351,32 @@ minetest.register_node("default:aspen_sapling", {
 	end,
 })
 
+--[[
+--============
+default.register_leave = function()
+local leave_name = 'default:leaves'
+local drop_node = leave_name
+end
+--============
+default.dig_leaves = function( pos, node_name, user )
+  --only dig give the leaves if shears are used
+	if not user then return false end
+  local wielded = user:get_wielded_item()
+  if 'default:tool_shears' == wielded:get_name() then
+    local inv = user:get_inventory()
+    if inv then
+      inv:add_item("main", ItemStack( node_name ))
+    end
+  end
+end
 
 
-
+--FROM VINES
+	after_dig_node = function( pos, node, oldmetadata, user )
+      default.dig_leaves( pos, drop_node, user )
+    end
+--============
+]]
 
 --
 -- Ores

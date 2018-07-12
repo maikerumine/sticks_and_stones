@@ -493,3 +493,93 @@ function minetest.handle_node_drops(pos, drops, digger)
 	end
 	return old_handle_node_drops(pos, hot_drops, digger)
 end
+
+
+
+-----------------------------------------------------------------------------------------------
+-- tool_tree_pruning_shears
+-----------------------------------------------------------------------------------------------
+local function pruning_shears_can_break(pos, deff, player)
+	local def = ItemStack({name=deff.name}):get_definition()
+
+	if not def.diggable or (def.can_dig and not def.can_dig(pos,player)) then
+		minetest.log("info", player:get_player_name() .. " tried to prune or shear a tree "
+		.. def.name .. " which is not diggable "
+		.. minetest.pos_to_string(pos))
+		return
+	end
+
+	if minetest.is_protected(pos, player:get_player_name()) then
+		minetest.log("action", player:get_player_name()
+			.. " tried to prune " .. def.name
+			.. " at protected position "
+			.. minetest.pos_to_string(pos))
+		minetest.record_protection_violation(pos, player:get_player_name())
+		return
+	end
+
+	return true
+end
+-- turns nodes with group flora=1 & flower=0 into cut grass
+local function pruning_shears_on_use(itemstack, user, pointed_thing, uses)
+	local pt = pointed_thing
+	-- check if pointing at a node
+	if not pt then
+		return
+	end
+	if pt.type ~= "node" then
+		return
+	end
+
+	local under = minetest.get_node(pt.under)
+	local above_pos = {x=pt.under.x, y=pt.under.y+1, z=pt.under.z}
+	local above = minetest.get_node(above_pos)
+
+	-- return if any of the nodes is not registered
+	if not minetest.registered_nodes[under.name] then
+		return
+	end
+	if not minetest.registered_nodes[above.name] then
+		return
+	end
+
+	if not pruning_shears_can_break(pt.under, under, user) then
+		return
+	end
+	-- check if something that can be cut using fine tools
+	if minetest.get_item_group(under.name, "snappy") > 0 then
+		-- check if leaves
+		if minetest.get_item_group(under.name, "leaves") == 1 then
+ 
+		minetest.node_dig(pt.under, under, user) 
+		minetest.add_item(pt.under, under, user, ItemStack("default:leaves"))
+		end
+		
+		minetest.sound_play("default_dig_crumbly", {
+			pos = pt.under,
+			gain = 0.5,
+		})
+		itemstack:add_wear(65535/(uses-1))
+		return itemstack
+
+	end
+end
+-- the tool
+minetest.register_tool("default:tool_tree_pruning_shears", {
+	description = "Pruning Shears -Used for quick collecting of leaves-",
+	inventory_image = "default_tool_tree_pruning_shears.png^[makealpha:255,255,255",
+		tool_capabilities = {
+		full_punch_interval = 1.2,
+		max_drop_level=0,
+		groupcaps={
+			choppy={times={[1]=15.00, [2]=10.00, [3]=5.30}, uses=20, maxlevel=1},
+		},
+		damage_groups = {fleshy=3},
+	},
+	sound = {breaks = "default_tool_breaks"},
+	on_use = function(itemstack, user, pointed_thing)
+		return pruning_shears_on_use(itemstack, user, pointed_thing, 320)
+	end,
+
+})
+

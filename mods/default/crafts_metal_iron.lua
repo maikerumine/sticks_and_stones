@@ -988,6 +988,17 @@ minetest.register_craft({
 --===========================
 --===========================
 
+--T R E E  S H E A R S--
+minetest.register_craft({
+	output = "default:tool_tree_pruning_shears",
+	recipe = {
+		{'', 'default:iron_hardware', 'default:steel_saw_blade'},
+		{'', 'default:steel_bar', ''},
+		{'default:handle_long', 'default:iron_hardware', ''},
+	},
+})
+
+
 --S A W--
 minetest.register_craft({
 	output = "default:tool_steel_saw",
