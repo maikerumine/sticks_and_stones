@@ -531,7 +531,7 @@ stairs.register_stair_and_slab(
 	"Stone Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"stone_block",
 	"default:stone_block",
@@ -541,7 +541,7 @@ stairs.register_stair_and_slab(
 	"Stone Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"desert_stone",
 	"default:desert_stone",
@@ -571,7 +571,7 @@ stairs.register_stair_and_slab(
 	"Desert Stone Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"desert_stone_block",
 	"default:desert_stone_block",
@@ -581,7 +581,7 @@ stairs.register_stair_and_slab(
 	"Desert Stone Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"sandstone",
 	"default:sandstone",
@@ -601,7 +601,7 @@ stairs.register_stair_and_slab(
 	"Sandstone Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"sandstone_block",
 	"default:sandstone_block",
@@ -611,7 +611,7 @@ stairs.register_stair_and_slab(
 	"Sandstone Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"desert_sandstone",
 	"default:desert_sandstone",
@@ -631,7 +631,7 @@ stairs.register_stair_and_slab(
 	"Desert Sandstone Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"desert_sandstone_block",
 	"default:desert_sandstone_block",
@@ -641,7 +641,7 @@ stairs.register_stair_and_slab(
 	"Desert Sandstone Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"silver_sandstone",
 	"default:silver_sandstone",
@@ -661,7 +661,7 @@ stairs.register_stair_and_slab(
 	"Silver Sandstone Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"silver_sandstone_block",
 	"default:silver_sandstone_block",
@@ -671,7 +671,7 @@ stairs.register_stair_and_slab(
 	"Silver Sandstone Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"obsidian",
 	"default:obsidian",
@@ -691,7 +691,7 @@ stairs.register_stair_and_slab(
 	"Obsidian Brick Slab",
 	default.node_sound_stone_defaults()
 )
---[[
+
 stairs.register_stair_and_slab(
 	"obsidian_block",
 	"default:obsidian_block",
@@ -701,7 +701,7 @@ stairs.register_stair_and_slab(
 	"Obsidian Block Slab",
 	default.node_sound_stone_defaults()
 )
-]]
+
 stairs.register_stair_and_slab(
 	"brick",
 	"default:brick",

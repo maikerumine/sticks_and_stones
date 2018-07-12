@@ -191,7 +191,7 @@ minetest.register_node("default:snow_trail", {
 			{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5},
 		},
 	},
-	groups = {crumbly = 2, falling_node = 1, puts_out_fire = 1},
+	groups = {crumbly = 3, falling_node = 1, puts_out_fire = 1},
 	drop = "default:snow",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
