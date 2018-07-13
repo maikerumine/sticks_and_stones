@@ -155,7 +155,7 @@ minetest.register_node("default:dirt_with_snow_trail", {
 minetest.register_node("default:sand_trail", {
 	description = "Sand With Footprint",
 	tiles = {"default_sand.png^default_footprint.png", "default_sand.png"},
-	groups = {crumbly = 2, falling_node = 1, sand = 1},
+	groups = {crumbly = 3, falling_node = 1, sand = 1},
 	drop = "default:sand",
 	sounds = default.node_sound_sand_defaults(),
 })
@@ -171,7 +171,7 @@ minetest.register_node("default:desert_sand_trail", {
 minetest.register_node("default:silver_sand_trail", {
 	description = "Silver Sand With Footprint",
 	tiles = {"default_silver_sand.png^default_footprint.png", "default_silver_sand.png"},
-	groups = {crumbly = 2, falling_node = 1, sand = 1},
+	groups = {crumbly = 3, falling_node = 1, sand = 1},
 	drop = "default:silver_sand",
 	sounds = default.node_sound_sand_defaults(),
 })
@@ -191,7 +191,7 @@ minetest.register_node("default:snow_trail", {
 			{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5},
 		},
 	},
-	groups = {crumbly = 2, falling_node = 1, puts_out_fire = 1},
+	groups = {crumbly = 3, falling_node = 1, puts_out_fire = 1},
 	drop = "default:snow",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},

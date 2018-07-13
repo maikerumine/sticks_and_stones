@@ -281,12 +281,55 @@ minetest.register_node("default:stonebrick", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("default:stone_block", {
+	description = "Stone Block",
+	tiles = {"default_stone_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("default:mossycobble", {
 	description = "Mossy Cobblestone",
 	tiles = {"default_mossycobble.png"},
 	drop = 'default:pebble_1 3',
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:desert_stone", {
+	description = "Desert Stone",
+	tiles = {"default_desert_stone.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'default:desert_cobble',
+	legacy_mineral = true,
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:desert_cobble", {
+	description = "Desert Cobblestone",
+	tiles = {"default_desert_cobble.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:desert_stonebrick", {
+	description = "Desert Stone Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_desert_stone_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:desert_stone_block", {
+	description = "Desert Stone Block",
+	tiles = {"default_desert_stone_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -304,40 +347,16 @@ minetest.register_node("default:sandstonebrick", {
 	tiles = {"default_sandstone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2},
-	drop = 'default:sandstone 4',
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("default:desert_stone", {
-	description = "Desert Stone",
-	tiles = {"default_desert_stone.png"},
-	groups = {cracky = 3, stone = 1},
-	drop = 'default:desert_pebble_1 3',
-	legacy_mineral = true,
-	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_node("default:desert_cobble", {
-	description = "Desert Cobblestone",
-	tiles = {"default_desert_cobble.png"},
-	drop = 'default:desert_pebble_1 3',
+minetest.register_node("default:sandstone_block", {
+	description = "Sandstone Block",
+	tiles = {"default_sandstone_block.png"},
 	is_ground_content = false,
-	groups = {cracky = 3, stone = 2},
+	groups = {cracky = 2},
 	sounds = default.node_sound_stone_defaults(),
 })
-
-minetest.register_node("default:desert_stonebrick", {
-	description = "Desert Stone Brick",
-	paramtype2 = "facedir",
-	place_param2 = 0,
-	drop = 'default:desert_cobble 4',
-	tiles = {"default_desert_stone_brick.png"},
-	is_ground_content = false,
-	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
-})
-
-
 
 minetest.register_node("default:desert_sandstone", {
 	description = "Desert Sandstone",
@@ -350,8 +369,15 @@ minetest.register_node("default:desert_sandstone_brick", {
 	description = "Desert Sandstone Brick",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	drop = 'default:desert_sandstone 4',
 	tiles = {"default_desert_sandstone_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:desert_sandstone_block", {
+	description = "Desert Sandstone Block",
+	tiles = {"default_desert_sandstone_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 2},
 	sounds = default.node_sound_stone_defaults(),
@@ -360,7 +386,25 @@ minetest.register_node("default:desert_sandstone_brick", {
 minetest.register_node("default:silver_sandstone", {
 	description = "Silver Sandstone",
 	tiles = {"default_silver_sandstone.png"},
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:silver_sandstone_brick", {
+	description = "Silver Sandstone Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_silver_sandstone_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:silver_sandstone_block", {
+	description = "Silver Sandstone Block",
+	tiles = {"default_silver_sandstone_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -371,6 +415,23 @@ minetest.register_node("default:obsidian", {
 	groups = {cracky = 1, level = 2},
 })
 
+minetest.register_node("default:obsidianbrick", {
+	description = "Obsidian Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_obsidian_brick.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+})
+
+minetest.register_node("default:obsidian_block", {
+	description = "Obsidian Block",
+	tiles = {"default_obsidian_block.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+})
 --
 -- Soft / Non-Stone
 --
@@ -387,7 +448,7 @@ minetest.register_node("default:dirt_with_grass", {
 	tiles = {"default_grass.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -399,7 +460,7 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 	tiles = {"default_grass.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, not_in_creative_inventory = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, not_in_creative_inventory = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -412,7 +473,7 @@ minetest.register_node("default:dirt_with_dry_grass", {
 		"default_dirt.png",
 		{name = "default_dirt.png^default_dry_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -424,7 +485,7 @@ minetest.register_node("default:dirt_with_snow", {
 	tiles = {"default_snow.png", "default_dirt.png",
 		{name = "default_dirt.png^default_snow_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 1, spreading_dirt_type = 1, snowy = 1, falling_node = 1},
+	groups = {crumbly = 2, spreading_dirt_type = 1, snowy = 1, falling_node = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
@@ -439,7 +500,7 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 		{name = "default_dirt.png^default_rainforest_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -454,7 +515,7 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 		{name = "default_dirt.png^default_coniferous_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 1, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -679,6 +740,11 @@ minetest.register_node("default:cave_ice", {
 --
 -- Trees
 --
+
+
+
+	
+
 minetest.register_node("default:tree_extracted", {
 	description = "Tree Extracted  --Use for fuel now",
 	--tiles = {"default_tree_top.png^[colorize:gray:75", "default_tree_top.png^[colorize:gray:75", "default_tree.png^[colorize:gray:75"},
@@ -758,6 +824,8 @@ minetest.register_node("default:sapling", {
 	end,
 })
 
+
+
 minetest.register_node("default:leaves", {
 	description = "Leaves",
 	drawtype = "allfaces_optional",
@@ -767,6 +835,7 @@ minetest.register_node("default:leaves", {
 	paramtype = "light",
 	is_ground_content = false,
 	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1, dig_by_water = 1},
+
 	drop = {
 		max_items = 1,
 		items = {
@@ -787,6 +856,8 @@ minetest.register_node("default:leaves", {
 			},
 		}
 	},
+	
+
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
@@ -917,6 +988,7 @@ minetest.register_node("default:jungleleaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 --[[
 minetest.register_node("default:junglesapling", {
@@ -1075,6 +1147,7 @@ minetest.register_node("default:pine_needles",{
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 
 minetest.register_node("default:pine_sapling", {
@@ -1157,6 +1230,7 @@ minetest.register_node("default:acacia_leaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+
 })
 
 minetest.register_node("default:acacia_sapling", {
@@ -1237,6 +1311,8 @@ minetest.register_node("default:aspen_leaves", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = default.after_place_leaves,
+	
+
 })
 
 minetest.register_node("default:aspen_sapling", {
@@ -1275,9 +1351,32 @@ minetest.register_node("default:aspen_sapling", {
 	end,
 })
 
+--[[
+--============
+default.register_leave = function()
+local leave_name = 'default:leaves'
+local drop_node = leave_name
+end
+--============
+default.dig_leaves = function( pos, node_name, user )
+  --only dig give the leaves if shears are used
+	if not user then return false end
+  local wielded = user:get_wielded_item()
+  if 'default:tool_shears' == wielded:get_name() then
+    local inv = user:get_inventory()
+    if inv then
+      inv:add_item("main", ItemStack( node_name ))
+    end
+  end
+end
 
 
-
+--FROM VINES
+	after_dig_node = function( pos, node, oldmetadata, user )
+      default.dig_leaves( pos, drop_node, user )
+    end
+--============
+]]
 
 --
 -- Ores

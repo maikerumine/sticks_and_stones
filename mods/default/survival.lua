@@ -176,6 +176,28 @@ minetest.register_craftitem('default:bucket_sap', {
 	stack_max = 1,
 })
 
+minetest.register_craftitem('default:bucket_sap_cooked', {
+	description = 'bucket with cooked sap',
+	inventory_image = 'survival_bucket_sap.png^[colorize:brown:75',
+	stack_max = 1,
+})
+
+minetest.register_craft({
+	output = 'default:sugar 4',
+	replacements = {{'default:bucket_sap_cooked', 'bucket:bucket_empty'}},
+	recipe = {
+		{'default:bucket_sap_cooked'},
+	}
+})
+--[[
+minetest.register_craft({
+		type = 'cooking',
+		output = 'default:sugar 4',
+		recipe = 'default:bucket_sap',
+		cooktime = 30,
+		replacements = {{'default:bucket_sap', 'bucket:bucket_empty'}},
+})
+]]
 minetest.register_craftitem('default:nesting', {
 	description = 'Nesting materials',
 	inventory_image = 'survival_nesting.png',
