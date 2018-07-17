@@ -510,6 +510,7 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 	end
 
 	local player_name = placer and placer:get_player_name() or ""
+	--[[
 	-- Check sapling position for protection
 	if minetest.is_protected(pos, player_name) then
 		minetest.record_protection_violation(pos, player_name)
@@ -526,7 +527,7 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 		minetest.chat_send_player(player_name, "Tree will intersect protection")
 		return itemstack
 	end
-
+]]
 	minetest.log("action", player_name .. " places node "
 			.. sapling_name .. " at " .. minetest.pos_to_string(pos))
 
