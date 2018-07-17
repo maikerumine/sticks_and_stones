@@ -332,6 +332,7 @@ minetest.register_node("default:desert_stone_block", {
 	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
+<<<<<<< HEAD
 
 minetest.register_node("default:sandstone", {
 	description = "Sandstone",
@@ -350,6 +351,26 @@ minetest.register_node("default:sandstonebrick", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+=======
+
+minetest.register_node("default:sandstone", {
+	description = "Sandstone",
+	tiles = {"default_sandstone.png"},
+	groups = {crumbly = 1, cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("default:sandstonebrick", {
+	description = "Sandstone Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_sandstone_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+>>>>>>> 86dc014e7c1625a2766b034656883b4bfa4322fb
 minetest.register_node("default:sandstone_block", {
 	description = "Sandstone Block",
 	tiles = {"default_sandstone_block.png"},
@@ -473,6 +494,7 @@ minetest.register_node("default:dirt_with_grass", {
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+<<<<<<< HEAD
 	drop = {
 		max_items = 2,
 		items = {
@@ -497,6 +519,9 @@ minetest.register_node("default:dirt_with_grass", {
 			},
 		},
 	},
+=======
+	drop = 'default:dirt',
+>>>>>>> 86dc014e7c1625a2766b034656883b4bfa4322fb
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
@@ -548,6 +573,7 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 			tileable_vertical = false}
 	},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
+<<<<<<< HEAD
 	drop = {
 		max_items = 2,
 		items = {
@@ -572,6 +598,9 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 			},
 		},
 	},
+=======
+	drop = "default:dirt",
+>>>>>>> 86dc014e7c1625a2766b034656883b4bfa4322fb
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),
@@ -586,6 +615,7 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 			tileable_vertical = false}
 	},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
+<<<<<<< HEAD
 	drop = {
 		max_items = 2,
 		items = {
@@ -610,6 +640,9 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 			},
 		},
 	},
+=======
+	drop = "default:dirt",
+>>>>>>> 86dc014e7c1625a2766b034656883b4bfa4322fb
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),
