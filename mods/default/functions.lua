@@ -532,8 +532,8 @@ minetest.register_abm({
 	label = "Moss growth",
 	nodenames = {"default:cobble", "stairs:slab_cobble", "stairs:stair_cobble", "walls:cobble"},
 	neighbors = {"group:water"},
-	interval = 180,  --was 16
-	chance = 60,  --was 200
+	interval = 60,  --was 16
+	chance = 200,  --was 200
 	catch_up = false,
 	action = function(pos, node)
 		if node.name == "default:cobble" then
