@@ -64,6 +64,12 @@ default.treasure_list = {
 	{name="default:tool_sword_stone", min_depth = 45},
 	{name="default:chain", min_depth = 50},
 	{name="default:iron_bars", min_depth = 150},
+	{name="farming:green_bean_seed", min_depth = 250},
+	{name="farming:corn_base_seed", min_depth = 350},
+	{name="farming:tomato_seed", min_depth = 450},
+	{name="farming:potato_eyes", min_depth = 550},
+	{name="farming:melon_seed", min_depth = 650},
+
 	{name="default:iron_bloom", min_depth = 777},
 	{name="default:steelblock", min_depth = 800},
 	{name="default:steelblock", min_depth = 1800},

@@ -562,9 +562,9 @@ minetest.register_craft({
 	type = "shapeless",
 	output = "default:dandelion_leave 4",
 	recipe = {"flowers:dandelion_yellow"},
-	replacements = {
-		{"flowers:dandelion_yellow", "dye:yellow"}
-	},
+--	replacements = {
+--		{"flowers:dandelion_yellow", "dye:yellow"}
+--	},
 })
 
 -----------------------------------------------------------------------------------------------

@@ -6,8 +6,8 @@ arsdragonfly@gmail.com
 --Time between two subsequent messages.
 local MESSAGE_INTERVAL = 0
 -- Added default messages file
-local default_messages_file = "default_random_messages"
-
+local default_messages_file = "random_messages"
+local random_messages_interval = tonumber(minetest.settings:get("random_messages_interval"))
 math.randomseed(os.time())
 
 random_messages = {}

@@ -232,7 +232,7 @@ minetest.register_node("default:straw", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
-minetest.register_node("default:default_stone_brick", {
+minetest.register_node("default:stone_brick", {
   description = "Stone Brick",
 	tiles = {"darkage_stone_brick.png"},
 	is_ground_content = true,
@@ -405,10 +405,18 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:default_stone_brick 3',
+	output = 'default:stone_brick 3',
 	recipe = {
     {'default:cobble','default:cobble'},
 		{'default:cobble','default:cobble'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:desert_stone_cobble 3',
+	recipe = {
+    {'default:desert_cobble','default:cobble'},
+		{'default:cobble','default:desert_cobble'},
 	}
 })
 

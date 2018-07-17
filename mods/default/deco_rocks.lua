@@ -77,7 +77,7 @@ minetest.register_node("default:small_rocks", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-
+--[[  removed op
 -- Small rocks can be used to create cobblestone, if you like.
 minetest.register_craft({
 	output = "default:cobble",
@@ -87,7 +87,7 @@ minetest.register_craft({
 		{"default:small_rocks", "default:small_rocks", ""},
 	},
 })
-
+]]
 
 
 

@@ -45,14 +45,14 @@ minetest.register_craft({
 	type = 'cooking',
 	recipe = 'default:copper_lump',
 	output = 'default:orangehot_copper_ingot',
-	cooktime = 30,
+	cooktime = 60,
 })
 
 minetest.register_craft({
 	type = 'cooking',
 	recipe = 'default:copper_ingot',
 	output = 'default:orangehot_copper_ingot',
-	cooktime = 30,
+	cooktime = 60,
 })
 
 

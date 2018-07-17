@@ -69,13 +69,13 @@ minetest.register_node("simple_protection:shared_chest", {
 	-- on_metadata_inventory_move logging is redundant: Same chest contents
 	
 })
-
+--[[
 minetest.register_craft({
 	type = "shapeless",
 	output = "simple_protection:shared_chest",
 	recipe = { "simple_protection:claim", "default:chest_locked" }
 })
-
+]]
 minetest.register_craft({
 	type = "shapeless",
 	output = "simple_protection:shared_chest",

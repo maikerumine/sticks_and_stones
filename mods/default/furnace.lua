@@ -26,6 +26,7 @@ local furnace_inactive_formspec =
 local furnace_receipes = {
 	--input                 output            time
 	{"default:crucible_glue", "default:glue",      10},
+	{"default:bucket_sap", "default:bucket_sap_cooked",      10},
 	{"default:clay_lump", "default:clay_brick",      13},
 	{"default:tree", "default:charcoal 2",      30},
 	{"default:jungletree", "default:charcoal 2",      38},

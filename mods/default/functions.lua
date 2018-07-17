@@ -487,7 +487,7 @@ minetest.register_abm({
 --
 -- Checks if specified volume intersects a protected volume
 --
-
+--[[
 function default.intersects_protection(minp, maxp, player_name, interval)
 	-- 'interval' is the largest allowed interval for the 3D lattice of checks
 
@@ -522,6 +522,36 @@ function default.intersects_protection(minp, maxp, player_name, interval)
 
 	return false
 end
+]]
+
+--
+-- Moss growth on cobble near water
+--
+
+minetest.register_abm({
+	label = "Moss growth",
+	nodenames = {"default:cobble", "stairs:slab_cobble", "stairs:stair_cobble", "walls:cobble"},
+	neighbors = {"group:water"},
+	interval = 180,  --was 16
+	chance = 60,  --was 200
+	catch_up = false,
+	action = function(pos, node)
+		if node.name == "default:cobble" then
+			minetest.set_node(pos, {name = "default:mossycobble"})
+		elseif node.name == "stairs:slab_cobble" then
+			minetest.set_node(pos, {name = "stairs:slab_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_cobble" then
+			minetest.set_node(pos, {name = "stairs:stair_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_outer_cobble" then
+					minetest.set_node(pos, {name = "stairs:stair_outer_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_inner_cobble" then
+					minetest.set_node(pos, {name = "stairs:stair_inner_mossycobble", param2 = node.param2})
+		elseif node.name == "walls:cobble" then
+			minetest.set_node(pos, {name = "walls:mossycobble", param2 = node.param2})
+		end
+	end
+})
+
 
 --
 -- Coral death near air
