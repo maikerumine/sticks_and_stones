@@ -17,7 +17,7 @@ function default.can_grow(pos)
 		return false
 	end
 	local light_level = minetest.get_node_light(pos)
-	if not light_level or light_level < 13 then
+	if not light_level or light_level < 13 then  --13
 		return false
 	end
 	return true
@@ -36,7 +36,7 @@ end
 function default.grow_sapling(pos)
 	if not default.can_grow(pos) then
 		-- try again 5 min later
-		minetest.get_node_timer(pos):start(300)
+		minetest.get_node_timer(pos):start(3)  --300
 		return
 	end
 
@@ -91,7 +91,7 @@ function default.grow_sapling(pos)
 		default.grow_new_emergent_jungle_tree(pos)
 	end
 end
-
+--[[]]
 minetest.register_lbm({
 	name = "default:convert_saplings_to_node_timer",
 	nodenames = {"default:sapling", "default:junglesapling",
@@ -101,7 +101,7 @@ minetest.register_lbm({
 		minetest.get_node_timer(pos):start(math.random(300, 1500))
 	end
 })
-
+--]]
 --
 -- Tree generation
 --
