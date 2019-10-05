@@ -45,7 +45,30 @@ minetest.register_node("default:dirt_trail", {
 	description = "Dirt With Footprint",
 	tiles = {"default_dirt.png^default_footprint.png", "default_dirt.png"},
 	groups = {crumbly = 2, soil = 1, falling_node = 1},
-	drop = "default:dirt",
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults(),
 })
 
@@ -55,7 +78,30 @@ minetest.register_node("default:dirt_with_grass_trail", {
 		{name = "default_dirt.png^default_grass_side.png",
 		tileable_vertical = false}},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
-	drop = "default:dirt",
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
@@ -80,7 +126,30 @@ minetest.register_node("default:dirt_with_rainforest_litter_trail", {
 		{name = "default_dirt.png^default_rainforest_litter_side.png",
 		tileable_vertical = false}},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
-	drop = "default:dirt",
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),
@@ -92,7 +161,30 @@ minetest.register_node("default:dirt_with_coniferous_litter_trail", {
 		{name = "default_dirt.png^default_coniferous_litter_side.png",
 		tileable_vertical = false}},
 	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, falling_node = 1},
-	drop = "default:dirt",
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),

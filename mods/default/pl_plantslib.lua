@@ -498,9 +498,9 @@ function default:spawn_on_surfaces(sd,sp,sr,sc,ss,sa)
 			local p_top = { x = pos.x, y = pos.y + 1, z = pos.z }	
 			local n_top = minetest.get_node(p_top)
 			local perlin_fertile_area = minetest.get_perlin(biome.seed_diff, perlin_octaves, perlin_persistence, perlin_scale)
-			local noise1 = perlin_fertile_area:get2d({x=p_top.x, y=p_top.z})
-			local noise2 = default.perlin_temperature:get2d({x=p_top.x, y=p_top.z})
-			local noise3 = default.perlin_humidity:get2d({x=p_top.x+150, y=p_top.z+50})
+			local noise1 = perlin_fertile_area:get_2d({x=p_top.x, y=p_top.z})	--fix depreciated get2d to get_2d
+			local noise2 = default.perlin_temperature:get_2d({x=p_top.x, y=p_top.z})	--fix depreciated get2d to get_2d
+			local noise3 = default.perlin_humidity:get_2d({x=p_top.x+150, y=p_top.z+50})	--fix depreciated get2d to get_2d
 			if noise1 > biome.plantlife_limit 
 			  and noise2 <= biome.temp_min
 			  and noise2 >= biome.temp_max

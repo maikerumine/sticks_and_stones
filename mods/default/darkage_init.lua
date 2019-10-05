@@ -1,7 +1,7 @@
 
 print (" ---- Dark Age is Loading! ---- ")
 -- Commend this lines if you don't like some of this features
-dofile(minetest.get_modpath("default").."/darkage_mapgen.lua")
+--dofile(minetest.get_modpath("default").."/darkage_mapgen.lua") 20191004-Removed - too laggy
 dofile(minetest.get_modpath("default").."/darkage_building.lua")
 dofile(minetest.get_modpath("default").."/darkage_furnature.lua")
 --dofile(minetest.get_modpath("default").."/darkage_stairs.lua")  --moved to stairs mod

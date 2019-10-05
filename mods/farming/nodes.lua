@@ -5,7 +5,7 @@ minetest.override_item("default:dirt", {
 		wet = "farming:soil_wet"
 	}
 })
-
+--[[
 minetest.override_item("default:dirt_trail", {
 	soil = {
 		base = "default:dirt_trail",
@@ -13,7 +13,7 @@ minetest.override_item("default:dirt_trail", {
 		wet = "farming:soil_wet"
 	}
 })
-
+]]
 minetest.override_item("default:dirt_with_grass", {
 	soil = {
 		base = "default:dirt_with_grass",
@@ -21,7 +21,7 @@ minetest.override_item("default:dirt_with_grass", {
 		wet = "farming:soil_wet"
 	}
 })
-
+--[[
 minetest.override_item("default:dirt_with_grass_trail", {
 	soil = {
 		base = "default:dirt_with_grass_trail",
@@ -29,7 +29,7 @@ minetest.override_item("default:dirt_with_grass_trail", {
 		wet = "farming:soil_wet"
 	}
 })
-
+]]
 minetest.override_item("default:dirt_with_dry_grass", {
 	soil = {
 		base = "default:dirt_with_dry_grass",
@@ -37,7 +37,7 @@ minetest.override_item("default:dirt_with_dry_grass", {
 		wet = "farming:soil_wet"
 	}
 })
-
+--[[
 minetest.override_item("default:dirt_with_dry_grass_trail", {
 	soil = {
 		base = "default:dirt_with_dry_grass_trail",
@@ -45,7 +45,7 @@ minetest.override_item("default:dirt_with_dry_grass_trail", {
 		wet = "farming:soil_wet"
 	}
 })
-
+]]
 
 minetest.register_node("farming:soil", {
 	description = "Soil",

@@ -564,7 +564,7 @@ minetest.register_craft({
 	recipe = {"flowers:dandelion_yellow"},
 --	replacements = {
 --		{"flowers:dandelion_yellow", "dye:yellow"}
----	},
+--	},
 })
 
 -----------------------------------------------------------------------------------------------

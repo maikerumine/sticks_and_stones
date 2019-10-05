@@ -27,7 +27,7 @@ minetest.register_alias("survival:shell", "default:shell")
 minetest.register_alias("survival:nesting", "default:nesting")
 minetest.register_alias("survival:sand_with_food", "default:sand_with_food")
 
-
+--[[
 minetest.register_abm({
    label = 'sand with food',
 	nodenames = {"default:sand"},
@@ -44,7 +44,7 @@ minetest.register_abm({
 		end
 	end,
 })
-
+]]
 
 minetest.register_craft({
 		output = 'default:tool_machete_steel 1',
@@ -247,7 +247,7 @@ minetest.register_craftitem('default:'..craft, {
 end
 
 
-
+--[[  --bake into default nodes
 minetest.override_item('default:dirt_with_grass',{
 	drop = {
 		max_items = 2,
@@ -274,6 +274,7 @@ minetest.override_item('default:dirt_with_grass',{
 		},
 	},
 })
+]]
 --This will probably need to be a few nodes to show the states it can be in.
 minetest.register_node('default:spigot', {
 	description = 'spigot',

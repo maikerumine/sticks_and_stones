@@ -4,7 +4,7 @@
 See basic gameplay and info.  Feat Barsik!
 [url]https://www.youtube.com/watch?v=cfZpQzWYoWA[/url]
 
-[size=150]Server address:  23.28.87.79  Port: 30000[/size]
+[size=150]Server address:  esmine.net Port: 30106[/size]
 
 [b]RULES:[/b]  none
 [b]ADMIN:[/b]  none

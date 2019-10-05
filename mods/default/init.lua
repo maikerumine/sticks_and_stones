@@ -65,6 +65,7 @@ dofile(default_path.."/pl_biomeslib.lua")--From plants_lib.
 dofile(default_path.."/functions.lua")
 dofile(default_path.."/builtin_flowlib.lua")	--From Tenplusone and Qwertymine3
 dofile(default_path.."/flowlib.lua")	--From Qwertymine3
+dofile(default_path.."/trees.lua")
 dofile(default_path.."/nodes.lua")	--From From default, edited by maikerumine
 dofile(default_path.."/legacy.lua")
 dofile(default_path.."/mapgen.lua")  --From default, edited by maikerumine

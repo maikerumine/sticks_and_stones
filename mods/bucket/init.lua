@@ -187,7 +187,7 @@ bucket.register_liquid(
 	"Water Bucket",
 	{water_bucket = 1}
 )
---[[
+
 bucket.register_liquid(
 	"default:river_water_source",
 	"default:river_water_flowing",
@@ -197,7 +197,7 @@ bucket.register_liquid(
 	{water_bucket = 1},
 	true
 )
-]]
+
 bucket.register_liquid(
 	"default:metal_molten_source",
 	"default:metal_molten_flowing",

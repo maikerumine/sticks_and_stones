@@ -331,7 +331,7 @@ end
 minetest.register_abm({
 	nodenames = {"default:fruitless_bush"},
 	neighbors = {"group:soil", "group:potting_soil"},
-	interval = 100,
+	interval = 604800,  --was 1000  :)
 	chance = 4,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 

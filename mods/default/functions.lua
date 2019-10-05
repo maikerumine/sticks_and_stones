@@ -117,6 +117,20 @@ function default.node_sound_water_defaults(table)
 	return table
 end
 
+function default.node_sound_snow_defaults(table)
+	table = table or {}
+	table.footstep = table.footstep or
+			{name = "default_snow_footstep", gain = 0.2}
+	table.dig = table.dig or
+			{name = "default_snow_footstep", gain = 0.3}
+	table.dug = table.dug or
+			{name = "default_snow_footstep", gain = 0.3}
+	table.place = table.place or
+			{name = "default_place_node", gain = 1.0}
+	default.node_sound_defaults(table)
+	return table
+end
+
 --
 -- Lavacooling
 --
@@ -254,7 +268,9 @@ minetest.register_abm({
 	neighbors = {"group:sand"},
 	interval = 12,
 	chance = 83,
-	action = default.grow_cactus
+	action = function(...)
+		default.grow_cactus(...)
+	end
 })
 
 minetest.register_abm({
@@ -263,7 +279,9 @@ minetest.register_abm({
 	neighbors = {"default:dirt", "default:dirt_with_grass"},
 	interval = 14,
 	chance = 71,
-	action = default.grow_papyrus
+	action = function(...)
+		default.grow_papyrus(...)
+	end
 })
 
 
@@ -314,9 +332,73 @@ function default.register_fence(name, def)
 			connect_right = {{1/8,3/16,-1/16,1/2,5/16,1/16},
 				{1/8,-5/16,-1/16,1/2,-3/16,1/16}},
 		},
-		connects_to = {"group:fence", "group:wood", "group:tree"},
+		connects_to = {"group:fence", "group:wood", "group:tree", "group:wall"},
 		inventory_image = fence_texture,
 		wield_image = fence_texture,
+		tiles = {def.texture},
+		sunlight_propagates = true,
+		is_ground_content = false,
+		groups = {},
+	}
+	for k, v in pairs(default_fields) do
+		if def[k] == nil then
+			def[k] = v
+		end
+	end
+
+	-- Always add to the fence group, even if no group provided
+	def.groups.fence = 1
+
+	def.texture = nil
+	def.material = nil
+
+	minetest.register_node(name, def)
+end
+
+--
+-- Fence rail registration helper
+--
+
+function default.register_fence_rail(name, def)
+	minetest.register_craft({
+		output = name .. " 16",
+		recipe = {
+			{ def.material, def.material },
+			{ "", ""},
+			{ def.material, def.material },
+		}
+	})
+
+	local fence_rail_texture = "default_fence_rail_overlay.png^" .. def.texture ..
+			"^default_fence_rail_overlay.png^[makealpha:255,126,126"
+	-- Allow almost everything to be overridden
+	local default_fields = {
+		paramtype = "light",
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = {
+				{-1/16,  3/16, -1/16, 1/16,  5/16, 1/16},
+				{-1/16, -3/16, -1/16, 1/16, -5/16, 1/16}
+			},
+			-- connect_top =
+			-- connect_bottom =
+			connect_front = {
+				{-1/16,  3/16, -1/2, 1/16,  5/16, -1/16},
+				{-1/16, -5/16, -1/2, 1/16, -3/16, -1/16}},
+			connect_left = {
+				{-1/2,  3/16, -1/16, -1/16,  5/16, 1/16},
+				{-1/2, -5/16, -1/16, -1/16, -3/16, 1/16}},
+			connect_back = {
+				{-1/16,  3/16, 1/16, 1/16,  5/16, 1/2},
+				{-1/16, -5/16, 1/16, 1/16, -3/16, 1/2}},
+			connect_right = {
+				{1/16,  3/16, -1/16, 1/2,  5/16, 1/16},
+				{1/16, -5/16, -1/16, 1/2, -3/16, 1/16}},
+		},
+		connects_to = {"group:fence", "group:wall"},
+		inventory_image = fence_rail_texture,
+		wield_image = fence_rail_texture,
 		tiles = {def.texture},
 		sunlight_propagates = true,
 		is_ground_content = false,
@@ -345,7 +427,7 @@ end
 -- Prevent decay of placed leaves
 
 default.after_place_leaves = function(pos, placer, itemstack, pointed_thing)
-	if placer and not placer:get_player_control().sneak then
+	if placer and placer:is_player() and not placer:get_player_control().sneak then
 		local node = minetest.get_node(pos)
 		node.param2 = 1
 		minetest.set_node(pos, node)
@@ -482,46 +564,34 @@ minetest.register_abm({
 })
 
 
-
-
 --
--- Checks if specified volume intersects a protected volume
+-- Moss growth on cobble near water
 --
 
-function default.intersects_protection(minp, maxp, player_name, interval)
-	-- 'interval' is the largest allowed interval for the 3D lattice of checks
-
-	-- Compute the optimal float step 'd' for each axis so that all corners and
-	-- borders are checked. 'd' will be smaller or equal to 'interval'.
-	-- Subtracting 1e-4 ensures that the max co-ordinate will be reached by the
-	-- for loop (which might otherwise not be the case due to rounding errors).
-	local d = {}
-	for _, c in pairs({"x", "y", "z"}) do
-		if maxp[c] > minp[c] then
-			d[c] = (maxp[c] - minp[c]) / math.ceil((maxp[c] - minp[c]) / interval) - 1e-4
-		elseif maxp[c] == minp[c] then
-			d[c] = 1 -- Any value larger than 0 to avoid division by zero
-		else -- maxp[c] < minp[c], print error and treat as protection intersected
-			minetest.log("error", "maxp < minp in 'default.intersects_protection()'")
-			return true
+minetest.register_abm({
+	label = "Moss growth",
+	nodenames = {"default:cobble", "stairs:slab_cobble", "stairs:stair_cobble", "walls:cobble", "stairs:stair_inner_cobble", "stairs:stair_outer_cobble"},
+	neighbors = {"group:water"},
+	interval = 60,  --was 16
+	chance = 80,  --was 200
+	catch_up = false,
+	action = function(pos, node)
+		if node.name == "default:cobble" then
+			minetest.set_node(pos, {name = "default:mossycobble"})
+		elseif node.name == "stairs:slab_cobble" then
+			minetest.set_node(pos, {name = "stairs:slab_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_cobble" then
+			minetest.set_node(pos, {name = "stairs:stair_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_outer_cobble" then
+					minetest.set_node(pos, {name = "stairs:stair_outer_mossycobble", param2 = node.param2})
+		elseif node.name == "stairs:stair_inner_cobble" then
+					minetest.set_node(pos, {name = "stairs:stair_inner_mossycobble", param2 = node.param2})
+		elseif node.name == "walls:cobble" then
+			minetest.set_node(pos, {name = "walls:mossycobble", param2 = node.param2})
 		end
 	end
+})
 
-	for zf = minp.z, maxp.z, d.z do
-		local z = math.floor(zf + 0.5)
-		for yf = minp.y, maxp.y, d.y do
-			local y = math.floor(yf + 0.5)
-			for xf = minp.x, maxp.x, d.x do
-				local x = math.floor(xf + 0.5)
-				if minetest.is_protected({x = x, y = y, z = z}, player_name) then
-					return true
-				end
-			end
-		end
-	end
-
-	return false
-end
 
 --
 -- Coral death near air
@@ -683,3 +753,45 @@ minetest.register_globalstep(function(dtime)
 	end
 end)
 
+
+--
+-- NOTICE: This method is not an official part of the API yet.
+-- This method may change in future.
+--
+
+function default.can_interact_with_node(player, pos)
+	if player then
+		if minetest.check_player_privs(player, "protection_bypass") then
+			return true
+		end
+	else
+		return false
+	end
+
+	local meta = minetest.get_meta(pos)
+	local owner = meta:get_string("owner")
+
+	if not owner or owner == "" or owner == player:get_player_name() then
+		return true
+	end
+
+	-- Is player wielding the right key?
+	local item = player:get_wielded_item()
+	if item:get_name() == "default:key" then
+		local key_meta = item:get_meta()
+
+		if key_meta:get_string("secret") == "" then
+			local key_oldmeta = item:get_metadata()
+			if key_oldmeta == "" or not minetest.parse_json(key_oldmeta) then
+				return false
+			end
+
+			key_meta:set_string("secret", minetest.parse_json(key_oldmeta).secret)
+			item:set_metadata("")
+		end
+
+		return meta:get_string("key_lock_secret") == key_meta:get_string("secret")
+	end
+
+	return false
+end

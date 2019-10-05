@@ -42,7 +42,30 @@ minetest.register_node("default:dirt_with_leaves_1", {
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'default:dirt',
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -60,7 +83,30 @@ minetest.register_node("default:dirt_with_leaves_2", {
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'default:dirt',
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -78,7 +124,30 @@ minetest.register_node("default:grass_with_leaves_1", {
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'default:dirt',
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -96,7 +165,30 @@ minetest.register_node("default:grass_with_leaves_2", {
 		soil=1, falling_node = 1--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'default:dirt',
+	drop = {
+		max_items = 2,
+		items = {
+			{
+			items = {'default:slug_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:worm_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:centipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:milipede_raw'},
+			rarity = 30,
+			},
+			{
+			items = {'default:dirt'},
+			},
+		},
+	},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
