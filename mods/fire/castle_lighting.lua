@@ -66,7 +66,7 @@ minetest.register_craft({
 	output = "fire:chandelier",
 	recipe = {
 		{"", "", ""},
-		{"", "default:steel_bar", ""},
+		{"", "sas_core:steel_bar", ""},
 		{"fire:candle","fire:candle","fire:candle"},
 	}
 })

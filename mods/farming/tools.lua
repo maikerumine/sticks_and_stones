@@ -108,19 +108,19 @@ minetest.register_tool("farming:hydrometer", {
 
 minetest.register_craft({
 	output = "farming:watering_can",
-	replacements = {{"default:tool_gravel_sieve_hammer", "default:tool_gravel_sieve_hammer"},{"default:tool_anvil", "default:tool_anvil"},{"default:tool_steel_tongs", "default:tool_steel_tongs"},{"default:tool_steel_mandrel", "default:tool_steel_mandrel"}},
+	replacements = {{"sas_core:tool_gravel_sieve_hammer", "sas_core:tool_gravel_sieve_hammer"},{"sas_core:tool_anvil", "sas_core:tool_anvil"},{"sas_core:tool_steel_tongs", "sas_core:tool_steel_tongs"},{"sas_core:tool_steel_mandrel", "sas_core:tool_steel_mandrel"}},
 	recipe = {
-		{ "default:copper_bar", "default:tool_steel_tongs", "default:tool_gravel_sieve_hammer" },
-		{ "default:copper_plate", "default:tool_anvil", "default:copper_plate" },
-		{ "default:tool_steel_mandrel", "default:copper_plate", "default:orangehot_copper_ribbon" },
+		{ "sas_core:copper_bar", "sas_core:tool_steel_tongs", "sas_core:tool_gravel_sieve_hammer" },
+		{ "sas_core:copper_plate", "sas_core:tool_anvil", "sas_core:copper_plate" },
+		{ "sas_core:tool_steel_mandrel", "sas_core:copper_plate", "sas_core:orangehot_copper_ribbon" },
 	},
 })
 
 minetest.register_craft({
 	output = "farming:hydrometer",
 	recipe = {
-		{ "default:copper_ingot", "default:glue", "" },
-		{ "", "default:copper_bar", "default:glue" },
-		{ "", "", "default:glass_bottle" },
+		{ "default:copper_ingot", "sas_core:glue", "" },
+		{ "", "sas_core:copper_bar", "sas_core:glue" },
+		{ "", "", "vessels:glass_bottle" },
 	},
 })

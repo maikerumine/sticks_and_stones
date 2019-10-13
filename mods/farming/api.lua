@@ -85,9 +85,9 @@ farming.register_hoe = function(name, def)
 	end
 	if def.recipe == nil then
 		def.recipe = {
-			{"air","air","default:glue"},
-			{'default:glue', '','default:cord'},
-			{'default:cord', 'default:handle_long','default:cord'},
+			{"air","air","sas_core:glue"},
+			{'sas_core:glue', '','sas_core:cord'},
+			{'sas_core:cord', 'sas_core:handle_long','sas_core:cord'},
 		}
 	end
 	if def.max_uses == nil then
@@ -113,18 +113,18 @@ farming.register_hoe = function(name, def)
 		minetest.register_craft({
 			output = name:sub(2),
 			recipe = {
-				{def.material, def.material, "default:glue"},
-				{"default:glue", "", "default:cord"},
-				{"", "default:handle_long", ""}
+				{def.material, def.material, "sas_core:glue"},
+				{"sas_core:glue", "", "sas_core:cord"},
+				{"", "sas_core:handle_long", ""}
 			}
 		})
 		-- Reverse Recipe
 		minetest.register_craft({
 			output = name:sub(2),
 			recipe = {
-				{"default:glue",def.material, def.material},
-				{"default:cord", "", "default:glue"},
-				{"", "default:handle_long", ""}
+				{"sas_core:glue",def.material, def.material},
+				{"sas_core:cord", "", "sas_core:glue"},
+				{"", "sas_core:handle_long", ""}
 			}
 		})
 	end

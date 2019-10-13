@@ -1,20 +1,19 @@
+--
+-- Aliases for map generators
+--
+
 -- All mapgens
 
 minetest.register_alias("mapgen_stone", "default:stone")
 minetest.register_alias("mapgen_water_source", "default:water_source")
 minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
 
---
--- Aliases for map generators
---
+-- Additional aliases needed for mapgen v6
 
-minetest.register_alias("mapgen_stone", "default:stone")
+minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_dirt", "default:dirt")
 minetest.register_alias("mapgen_dirt_with_grass", "default:dirt_with_grass")
 minetest.register_alias("mapgen_sand", "default:sand")
-minetest.register_alias("mapgen_water_source", "default:water_source")
-minetest.register_alias("mapgen_river_water_source", "default:water_source")
-minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_gravel", "default:gravel")
 minetest.register_alias("mapgen_desert_stone", "default:desert_stone")
 minetest.register_alias("mapgen_desert_sand", "default:desert_sand")
@@ -22,9 +21,6 @@ minetest.register_alias("mapgen_dirt_with_snow", "default:dirt_with_snow")
 minetest.register_alias("mapgen_snowblock", "default:snowblock")
 minetest.register_alias("mapgen_snow", "default:snow")
 minetest.register_alias("mapgen_ice", "default:ice")
-minetest.register_alias("mapgen_sandstone", "default:sandstone")
-
--- Flora
 
 minetest.register_alias("mapgen_tree", "default:tree")
 minetest.register_alias("mapgen_leaves", "default:leaves")
@@ -35,14 +31,10 @@ minetest.register_alias("mapgen_junglegrass", "default:junglegrass")
 minetest.register_alias("mapgen_pine_tree", "default:pine_tree")
 minetest.register_alias("mapgen_pine_needles", "default:pine_needles")
 
--- Dungeons
-
 minetest.register_alias("mapgen_cobble", "default:cobble")
 minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
 minetest.register_alias("mapgen_mossycobble", "default:mossycobble")
 minetest.register_alias("mapgen_stair_desert_stone", "stairs:stair_desert_stone")
-minetest.register_alias("mapgen_sandstonebrick", "default:sandstonebrick")
-minetest.register_alias("mapgen_stair_sandstone_block", "stairs:stair_sandstone_block")
 
 
 --
@@ -212,7 +204,7 @@ function default.register_mgv6_ores()
 		y_max          = -64,
 		y_min          = -31000,
 	})
---[[
+
 	-- Copper
 
 	minetest.register_ore({
@@ -411,8 +403,6 @@ function default.register_mgv6_ores()
 		y_max          = -1024,
 		y_min          = -31000,
 	})
-	
-	]]
 end
 
 
@@ -562,14 +552,6 @@ function default.register_ores()
 			octaves = 1,
 			persist = 0.0
 		},
-		biomes = {"icesheet_ocean", "tundra", "tundra_beach", "tundra_ocean",
-			"taiga", "taiga_ocean", "snowy_grassland", "snowy_grassland_ocean",
-			"grassland", "grassland_dunes", "grassland_ocean", "coniferous_forest",
-			"coniferous_forest_dunes", "coniferous_forest_ocean", "deciduous_forest",
-			"deciduous_forest_shore", "deciduous_forest_ocean", "cold_desert",
-			"cold_desert_ocean", "savanna", "savanna_shore", "savanna_ocean",
-			"rainforest", "rainforest_swamp", "rainforest_ocean", "underground",
-			"floatland_coniferous_forest", "floatland_coniferous_forest_ocean"}
 	})
 
 	-- Dirt
@@ -591,9 +573,10 @@ function default.register_ores()
 			octaves = 1,
 			persist = 0.0
 		},
+		-- Only where default:dirt is present as surface material
 		biomes = {"taiga", "snowy_grassland", "grassland", "coniferous_forest",
-			"deciduous_forest", "deciduous_forest_shore", "savanna", "savanna_shore",
-			"rainforest", "rainforest_swamp", "floatland_coniferous_forest"}
+				"deciduous_forest", "deciduous_forest_shore", "rainforest",
+				"rainforest_swamp", "floatland_coniferous_forest"}
 	})
 
 	-- Gravel
@@ -615,14 +598,6 @@ function default.register_ores()
 			octaves = 1,
 			persist = 0.0
 		},
-		biomes = {"icesheet_ocean", "tundra", "tundra_beach", "tundra_ocean",
-			"taiga", "taiga_ocean", "snowy_grassland", "snowy_grassland_ocean",
-			"grassland", "grassland_dunes", "grassland_ocean", "coniferous_forest",
-			"coniferous_forest_dunes", "coniferous_forest_ocean", "deciduous_forest",
-			"deciduous_forest_shore", "deciduous_forest_ocean", "cold_desert",
-			"cold_desert_ocean", "savanna", "savanna_shore", "savanna_ocean",
-			"rainforest", "rainforest_swamp", "rainforest_ocean", "underground",
-			"floatland_coniferous_forest", "floatland_coniferous_forest_ocean"}
 	})
 
 	-- Scatter ores
@@ -661,7 +636,7 @@ function default.register_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
---[[
+
 	-- Tin
 
 	minetest.register_ore({
@@ -731,7 +706,7 @@ function default.register_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
-]]
+
 	-- Iron
 
 	minetest.register_ore({
@@ -766,7 +741,7 @@ function default.register_ores()
 		y_max          = -256,
 		y_min          = -31000,
 	})
---[[
+
 	-- Gold
 
 	minetest.register_ore({
@@ -906,7 +881,6 @@ function default.register_ores()
 		y_max          = -4096,
 		y_min          = -31000,
 	})
-	]]
 end
 
 
@@ -917,6 +891,8 @@ end
 -- All mapgens except mgv6
 
 function default.register_biomes(upper_limit)
+
+	-- Icesheet
 
 	minetest.register_biome({
 		name = "icesheet",
@@ -1696,7 +1672,6 @@ function default.register_floatland_biomes(floatland_level, shadow_limit)
 end
 
 
-
 --
 -- Register decorations
 --
@@ -1823,7 +1798,7 @@ local function register_dry_grass_decoration(offset, scale, length)
 	minetest.register_decoration({
 		name = "default:dry_grass_" .. length,
 		deco_type = "simple",
-		place_on = {"default:dirt_with_dry_grass"},
+		place_on = {"default:dry_dirt_with_dry_grass"},
 		sidelen = 16,
 		noise_params = {
 			offset = offset,
@@ -1887,7 +1862,7 @@ function default.register_decorations()
 		place_offset_y = -1,
 		flags = "force_placement",
 	})
-	
+
 	-- Apple tree and log
 
 	minetest.register_decoration({
@@ -2373,13 +2348,13 @@ function default.register_decorations()
 		place_on = {"default:sand"},
 		sidelen = 4,
 		noise_params = {
-			offset = -0.4,
-			scale = 3.0,
+			offset = -0.7,
+			scale = 4.0,
 			spread = {x = 16, y = 16, z = 16},
 			seed = 513337,
 			octaves = 1,
-			persist = 0.5,
-			flags = "absvalue"
+			persist = 0.0,
+			flags = "absvalue, eased"
 		},
 		biomes = {"coniferous_forest_dunes", "grassland_dunes"},
 		y_max = 6,

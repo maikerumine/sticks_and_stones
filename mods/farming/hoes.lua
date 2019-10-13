@@ -3,7 +3,7 @@ farming.register_hoe(":farming:hoe_stone", {
 	description = "Stone Hoe",
 	inventory_image = "farming_tool_stonehoe.png",
 	max_uses = 90,
-	material = "default:small_rocks"
+	material = "sas_core:small_rocks"
 })
 
 farming.register_hoe(":farming:hoe_steel", {

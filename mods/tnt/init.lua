@@ -1,4 +1,10 @@
+-- tnt/init.lua
+
 tnt = {}
+
+-- Load support for MT game translation.
+local S = minetest.get_translator("tnt")
+
 
 -- Default to enabled when in singleplayer
 local enable_tnt = minetest.settings:get_bool("enable_tnt")
@@ -58,8 +64,8 @@ local function eject_drops(drops, pos, radius)
 			local obj = minetest.add_item(drop_pos, dropitem)
 			if obj then
 				obj:get_luaentity().collect = true
-				obj:setacceleration({x = 0, y = -10, z = 0})
-				obj:setvelocity({x = math.random(-3, 3),
+				obj:set_acceleration({x = 0, y = -10, z = 0})
+				obj:set_velocity({x = math.random(-3, 3),
 						y = math.random(0, 10),
 						z = math.random(-3, 3)})
 			end
@@ -152,7 +158,7 @@ end
 local function entity_physics(pos, radius, drops)
 	local objs = minetest.get_objects_inside_radius(pos, radius)
 	for _, obj in pairs(objs) do
-		local obj_pos = obj:getpos()
+		local obj_pos = obj:get_pos()
 		local dist = math.max(1, vector.distance(pos, obj_pos))
 
 		local damage = (4 / dist) * radius
@@ -164,7 +170,7 @@ local function entity_physics(pos, radius, drops)
 			local moveoff = vector.multiply(dir, dist + 1.0)
 			local newpos = vector.add(pos, moveoff)
 			newpos = vector.add(newpos, {x = 0, y = 0.2, z = 0})
-			obj:setpos(newpos)
+			obj:set_pos(newpos)
 
 			obj:set_hp(obj:get_hp() - damage)
 		else
@@ -179,8 +185,8 @@ local function entity_physics(pos, radius, drops)
 			end
 
 			if do_knockback then
-				local obj_vel = obj:getvelocity()
-				obj:setvelocity(calc_velocity(pos, obj_pos,
+				local obj_vel = obj:get_velocity()
+				obj:set_velocity(calc_velocity(pos, obj_pos,
 						obj_vel, radius * 10))
 			end
 			if do_damage then
@@ -208,6 +214,7 @@ local function add_effects(pos, radius, drops)
 		collisiondetection = false,
 		vertical = false,
 		texture = "tnt_boom.png",
+		glow = 15,
 	})
 	minetest.add_particlespawner({
 		amount = 64,
@@ -272,7 +279,7 @@ function tnt.burn(pos, nodename)
 	end
 end
 
-local function tnt_explode(pos, radius, ignore_protection, ignore_on_blast, owner)
+local function tnt_explode(pos, radius, ignore_protection, ignore_on_blast, owner, explode_center)
 	pos = vector.round(pos)
 	-- scan for adjacent TNT nodes first, and enlarge the explosion
 	local vm1 = VoxelManip()
@@ -286,6 +293,10 @@ local function tnt_explode(pos, radius, ignore_protection, ignore_on_blast, owne
 	local c_tnt_burning = minetest.get_content_id("tnt:tnt_burning")
 	local c_tnt_boom = minetest.get_content_id("tnt:boom")
 	local c_air = minetest.get_content_id("air")
+	-- make sure we still have explosion even when centre node isnt tnt related
+	if explode_center then
+		count = 1
+	end
 
 	for z = pos.z - 2, pos.z + 2 do
 	for y = pos.y - 2, pos.y + 2 do
@@ -382,16 +393,21 @@ local function tnt_explode(pos, radius, ignore_protection, ignore_on_blast, owne
 end
 
 function tnt.boom(pos, def)
+	def = def or {}
+	def.radius = def.radius or 1
+	def.damage_radius = def.damage_radius or def.radius * 2
 	local meta = minetest.get_meta(pos)
 	local owner = meta:get_string("owner")
+	if not def.explode_center then
+		minetest.set_node(pos, {name = "tnt:boom"})
+	end
 	local sound = def.sound or "tnt_explode"
-	minetest.sound_play(sound, {pos = pos, gain = 1.5,
+	minetest.sound_play(sound, {pos = pos, gain = 2.5,
 			max_hear_distance = math.min(def.radius * 20, 128)})
-	minetest.set_node(pos, {name = "tnt:boom"})
 	local drops, radius = tnt_explode(pos, def.radius, def.ignore_protection,
-			def.ignore_on_blast, owner)
+			def.ignore_on_blast, owner, def.explode_center)
 	-- append entity drops
-	local damage_radius = (radius / def.radius) * def.damage_radius
+	local damage_radius = (radius / math.max(1, def.radius)) * def.damage_radius
 	entity_physics(pos, damage_radius, drops)
 	if not def.disable_drops then
 		eject_drops(drops, pos, radius)
@@ -412,7 +428,7 @@ minetest.register_node("tnt:boom", {
 })
 
 minetest.register_node("tnt:gunpowder", {
-	description = "Gun Powder",
+	description = S("Gun Powder"),
 	drawtype = "raillike",
 	paramtype = "light",
 	is_ground_content = false,
@@ -536,13 +552,28 @@ minetest.register_craft({
 	recipe = {"default:coal_lump", "default:gravel"}
 })
 
+minetest.register_craftitem("tnt:tnt_stick", {
+	description = S("TNT Stick"),
+	inventory_image = "tnt_tnt_stick.png",
+	groups = {flammable = 5},
+})
+
 if enable_tnt then
+	minetest.register_craft({
+		output = "tnt:tnt_stick 2",
+		recipe = {
+			{"tnt:gunpowder", "", "tnt:gunpowder"},
+			{"tnt:gunpowder", "default:paper", "tnt:gunpowder"},
+			{"tnt:gunpowder", "", "tnt:gunpowder"},
+		}
+	})
+
 	minetest.register_craft({
 		output = "tnt:tnt",
 		recipe = {
-			{"group:wood",    "tnt:gunpowder", "group:wood"},
-			{"tnt:gunpowder", "tnt:gunpowder", "tnt:gunpowder"},
-			{"group:wood",    "tnt:gunpowder", "group:wood"}
+			{"tnt:tnt_stick", "tnt:tnt_stick", "tnt:tnt_stick"},
+			{"tnt:tnt_stick", "tnt:tnt_stick", "tnt:tnt_stick"},
+			{"tnt:tnt_stick", "tnt:tnt_stick", "tnt:tnt_stick"}
 		}
 	})
 
@@ -650,6 +681,6 @@ end
 
 tnt.register_tnt({
 	name = "tnt:tnt",
-	description = "TNT",
+	description = S("TNT"),
 	radius = tnt_radius,
 })

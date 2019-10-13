@@ -101,9 +101,9 @@ minetest.register_alias("claim_stick", "simple_protection:claim")
 minetest.register_craft({
 	output = "simple_protection:claim",
 	recipe = {
-		{"default:orangehot_copperblock", "default:steel_ingot", "default:orangehot_copperblock"},
-		{"default:metal_molten_source", "default:stonebrick", "default:metal_molten_source"},
-		{"default:orangehot_copperblock", "default:steel_ingot", "default:orangehot_copperblock"},
+		{"sas_core:orangehot_copperblock", "default:steel_ingot", "sas_core:orangehot_copperblock"},
+		{"sas_core:metal_molten_source", "default:stonebrick", "sas_core:metal_molten_source"},
+		{"sas_core:orangehot_copperblock", "default:steel_ingot", "sas_core:orangehot_copperblock"},
 	}
 })
 

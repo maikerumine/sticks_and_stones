@@ -217,8 +217,8 @@ minetest.register_craft({
 		output = 'fire:oil_lamp_off 1',
 		recipe = {
 		{'default:glass'},
-		{'default:cord'},
-		{'default:steel_plate'},
+		{'sas_core:cord'},
+		{'sas_core:steel_plate'},
 		}
 })
 
@@ -227,7 +227,7 @@ minetest.register_craft({
 		recipe = {
 		{'group:wax', 'group:wax', 'group:wax'},
 		{'group:wax', 'group:wax', 'group:wax'},
-		{'', 'default:glass_bottle', ''},
+		{'', 'vessels:glass_bottle', ''},
 		}
 })
 

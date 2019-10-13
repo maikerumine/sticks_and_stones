@@ -1,3 +1,8 @@
+-- default/trees.lua
+
+-- support for MT game translation.
+local S = default.get_translator
+
 local random = math.random
 
 --
@@ -17,7 +22,7 @@ function default.can_grow(pos)
 		return false
 	end
 	local light_level = minetest.get_node_light(pos)
-	if not light_level or light_level < 13 then  --13
+	if not light_level or light_level < 13 then
 		return false
 	end
 	return true
@@ -36,7 +41,7 @@ end
 function default.grow_sapling(pos)
 	if not default.can_grow(pos) then
 		-- try again 5 min later
-		minetest.get_node_timer(pos):start(3)  --300
+		minetest.get_node_timer(pos):start(300)
 		return
 	end
 
@@ -81,17 +86,25 @@ function default.grow_sapling(pos)
 		minetest.log("action", "A bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_bush(pos)
+	elseif node.name == "default:blueberry_bush_sapling" then
+		minetest.log("action", "A blueberry bush sapling grows into a bush at "..
+			minetest.pos_to_string(pos))
+		default.grow_blueberry_bush(pos)
 	elseif node.name == "default:acacia_bush_sapling" then
 		minetest.log("action", "An acacia bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_acacia_bush(pos)
+	elseif node.name == "default:pine_bush_sapling" then
+		minetest.log("action", "A pine bush sapling grows into a bush at "..
+			minetest.pos_to_string(pos))
+		default.grow_pine_bush(pos)
 	elseif node.name == "default:emergent_jungle_sapling" then
 		minetest.log("action", "An emergent jungle sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_emergent_jungle_tree(pos)
 	end
 end
---[[]]
+
 minetest.register_lbm({
 	name = "default:convert_saplings_to_node_timer",
 	nodenames = {"default:sapling", "default:junglesapling",
@@ -101,7 +114,7 @@ minetest.register_lbm({
 		minetest.get_node_timer(pos):start(math.random(300, 1500))
 	end
 })
---]]
+
 --
 -- Tree generation
 --
@@ -179,7 +192,7 @@ function default.grow_tree(pos, is_apple_tree, bad)
 	end
 
 	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(5, 7)
+	local height = random(4, 5)
 	local c_tree = minetest.get_content_id("default:tree")
 	local c_leaves = minetest.get_content_id("default:leaves")
 
@@ -383,7 +396,7 @@ end
 function default.grow_new_apple_tree(pos)
 	local path = minetest.get_modpath("default") ..
 		"/schematics/apple_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+	minetest.place_schematic({x = pos.x - 3, y = pos.y - 1, z = pos.z - 3},
 		path, "random", nil, false)
 end
 
@@ -472,6 +485,15 @@ function default.grow_bush(pos)
 		path, "0", nil, false)
 end
 
+-- Blueberry bush
+
+function default.grow_blueberry_bush(pos)
+	local path = minetest.get_modpath("default") ..
+		"/schematics/blueberry_bush.mts"
+	minetest.place_schematic({x = pos.x - 1, y = pos.y, z = pos.z - 1},
+		path, "0", nil, false)
+end
+
 
 -- Acacia bush
 
@@ -480,6 +502,26 @@ function default.grow_acacia_bush(pos)
 		"/schematics/acacia_bush.mts"
 	minetest.place_schematic({x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
 		path, "0", nil, false)
+end
+
+
+-- Pine bush
+
+function default.grow_pine_bush(pos)
+	local path = minetest.get_modpath("default") ..
+		"/schematics/pine_bush.mts"
+	minetest.place_schematic({x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
+		path, "0", nil, false)
+end
+
+
+-- Large cactus
+
+function default.grow_large_cactus(pos)
+	local path = minetest.get_modpath("default") ..
+		"/schematics/large_cactus.mts"
+	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
+		path, "random", nil, false)
 end
 
 
@@ -510,7 +552,6 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 	end
 
 	local player_name = placer and placer:get_player_name() or ""
-	--[[
 	-- Check sapling position for protection
 	if minetest.is_protected(pos, player_name) then
 		minetest.record_protection_violation(pos, player_name)
@@ -524,10 +565,15 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 			interval) then
 		minetest.record_protection_violation(pos, player_name)
 		-- Print extra information to explain
-		minetest.chat_send_player(player_name, "Tree will intersect protection")
+--		minetest.chat_send_player(player_name,
+--			itemstack:get_definition().description .. " will intersect protection " ..
+--			"on growth")
+		minetest.chat_send_player(player_name,
+		    S("@1 will intersect protection on growth.",
+			itemstack:get_definition().description))
 		return itemstack
 	end
-]]
+
 	minetest.log("action", player_name .. " places node "
 			.. sapling_name .. " at " .. minetest.pos_to_string(pos))
 

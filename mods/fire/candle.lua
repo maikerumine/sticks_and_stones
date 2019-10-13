@@ -60,7 +60,7 @@ minetest.register_craft({
 	output = 'fire:candle 4',
 	recipe = {
 		{'default:coal_lump'},
-		{'default:cord'},
+		{'sas_core:cord'},
 		{'group:wax'},
 	}
 })

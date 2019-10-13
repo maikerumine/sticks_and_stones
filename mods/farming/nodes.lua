@@ -187,7 +187,7 @@ end
 minetest.override_item("default:junglegrass", {drop = {
 	max_items = 1,
 	items = {
-		{items = {'default:plant_fiber'},rarity = 8},
+		{items = {'sas_core:plant_fiber'},rarity = 8},
 		{items = {'default:junglegrass'}},
 	}
 }})

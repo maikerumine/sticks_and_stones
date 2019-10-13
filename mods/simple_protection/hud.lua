@@ -45,7 +45,7 @@ minetest.register_globalstep(function(dtime)
 
 	local shared = s_protect.share
 	for _, player in ipairs(minetest.get_connected_players()) do
-		local pos = vector.round(player:getpos())
+		local pos = vector.round(player:get_pos())
 		local player_name = player:get_player_name()
 
 		local current_owner = ""
