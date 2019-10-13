@@ -155,9 +155,9 @@ minetest.register_alias( 'vines:willow_rotten', 'air' )
 minetest.register_craft({
 	output = 'vines:rope_block',
 	recipe = {
-		{'group:vines', 'group:vines', 'group:vines'},
-		{'group:vines', 'group:wood', 'group:vines'},
-		{'group:vines', 'group:vines', 'group:vines'},
+  {'sas_core:iron_hardware', 'sas_core:wood', 'sas_core:iron_hardware'},
+  {'', 'group:vines', ''},
+  {'', 'group:vines', ''}
 	}
 })
 
@@ -176,9 +176,9 @@ end
 minetest.register_craft({
 	output = 'vines:shears',
 	recipe = {
-		{'', 'default:steel_ingot', ''},
-		{'group:stick', 'group:wood', 'default:steel_ingot'},
-		{'', '', 'group:stick'}
+  {'', 'sas_core:steel_plate', ''},
+  {'sas_core:handle_medium', 'sas_core:iron_hardware', 'sas_core:steel_plate'},
+  {'', 'sas_core:handle_medium', ''}
 	}
 })
 

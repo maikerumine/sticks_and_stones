@@ -147,7 +147,7 @@ dofile(default_path.."/hudclock.lua")  --from Rochambeau https://github.com/Roch
 print("			.		")
 dofile(default_path.."/heads.lua")  --from freeminer  thefamilygrog66  https://github.com/thefamilygrog66/heads
 print("		.			")
-dofile(default_path.."/sky.lua")  --from  rnd's mymod/sky    simple but not looking the best.
+--dofile(default_path.."/sky.lua")  --from  rnd's mymod/sky    simple but not looking the best.
 print("	.				")
 --      dofile(default_path.."/wieldview.lua")  --from  wieldview
 print(".            ")

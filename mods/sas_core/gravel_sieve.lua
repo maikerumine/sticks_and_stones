@@ -460,7 +460,7 @@ sas_core.disallow = function(pos, node, user, mode, new_param2)
 	return false
 end
 
-sas_core.handler = function(itemstack, user, pointed_thing)
+default.handler = function(itemstack, user, pointed_thing)
 	if pointed_thing.type ~= "node" then
 		return
 	end
@@ -494,7 +494,7 @@ minetest.register_tool("sas_core:tool_gravel_sieve_hammer", {
 	description = "Hammer converts Cobblestone into Gravel",
 	inventory_image = "gravelsieve_hammer.png",
 	on_use = function(itemstack, user, pointed_thing)
-		sas_core.handler(itemstack, user, pointed_thing)
+		default.handler(itemstack, user, pointed_thing)
 		return itemstack
 	end,
 })
