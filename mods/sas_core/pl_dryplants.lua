@@ -740,7 +740,7 @@ sas_core.grow_grass = function(pos)
 	local grass_size = math.random(1,5)
 	if minetest.get_node(right_here).name == "air"  -- instead of check_air = true,
 	or minetest.get_node(right_here).name == "default:junglegrass" then
-		minetest.set_node(right_here, {name="sas_core:grass_"..grass_size})
+		minetest.set_node(right_here, {name="default:grass_"..grass_size})
 	end
 end
 
