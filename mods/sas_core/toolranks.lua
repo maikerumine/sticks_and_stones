@@ -14,12 +14,12 @@ if minetest.get_modpath("toolranks") then
     original_description = "Climbing Pick",
     description = toolranks.create_description("Climbing Pick", 0, 1),
     after_use = toolranks.new_afteruse})
-
+--[[
   minetest.override_item("sas_core:tool_tree_pruning_shears", {
     original_description = "Pruning Shears -Used for quick collecting of leaves-",
     description = toolranks.create_description("Pruning Shears -Used for quick collecting of leaves-", 0, 1),
     after_use = toolranks.new_afteruse})
-
+]]
   minetest.override_item("sas_core:tool_battleaxe", {
     original_description = "Battleaxe",
     description = toolranks.create_description("Battleaxe", 0, 1),

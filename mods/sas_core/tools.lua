@@ -31,8 +31,8 @@ minetest.register_alias("default:tool_sword_iron", "sas_core:tool_sword_iron")
 minetest.register_alias("default:tool_sword_redhot_iron", "sas_core:tool_sword_redhot_iron")
 minetest.register_alias("default:tool_sword_hardened_steel", "sas_core:tool_sword_hardened_steel")
 
-minetest.register_alias("default:tool_tree_pruning_shears", "sas_core:tool_tree_pruning_shears")
-
+minetest.register_alias("default:tool_tree_pruning_shears", "vines:shears")
+minetest.register_alias("sas_core:tool_tree_pruning_shears", "vines:shears")
 -- mods/default/tools.lua
 
 
@@ -699,7 +699,7 @@ function minetest.handle_node_drops(pos, drops, digger)
 end
 
 
-
+--[[
 -----------------------------------------------------------------------------------------------
 -- tool_tree_pruning_shears
 -----------------------------------------------------------------------------------------------
@@ -786,4 +786,4 @@ minetest.register_tool("sas_core:tool_tree_pruning_shears", {
 	end,
 
 })
-
+]]

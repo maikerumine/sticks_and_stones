@@ -155,7 +155,7 @@ minetest.register_alias( 'vines:willow_rotten', 'air' )
 minetest.register_craft({
 	output = 'vines:rope_block',
 	recipe = {
-  {'sas_core:iron_hardware', 'sas_core:wood', 'sas_core:iron_hardware'},
+  {'sas_core:iron_hardware', 'group:wood', 'sas_core:iron_hardware'},
   {'', 'group:vines', ''},
   {'', 'group:vines', ''}
 	}
@@ -293,8 +293,8 @@ minetest.register_node("vines:rope_end", {
 
 minetest.register_tool("vines:shears", {
 	description = S("Shears"),
-	inventory_image = "vines_shears.png",
-	wield_image = "vines_shears.png",
+	inventory_image = "default_tool_tree_pruning_shears.png",
+	wield_image = "default_tool_tree_pruning_shears.png",
 	stack_max = 1,
 	max_drop_level = 3,
 	tool_capabilities = {

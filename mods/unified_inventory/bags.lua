@@ -161,7 +161,7 @@ minetest.register_on_joinplayer(function(player)
 		bags_inv:set_stack(bag, 1, player_inv:get_stack(bag, 1))
 	end
 end)
-
+--[[
 -- register bag tools
 minetest.register_tool("unified_inventory:bag_small", {
 	description = S("Small Bag"),
@@ -180,7 +180,7 @@ minetest.register_tool("unified_inventory:bag_large", {
 	inventory_image = "bags_large.png",
 	groups = {bagslots=24},
 })
-
+]]
 -- register bag crafts
 if minetest.get_modpath("farming") ~= nil then
 	minetest.register_craft({

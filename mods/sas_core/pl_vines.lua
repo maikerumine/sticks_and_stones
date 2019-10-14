@@ -16,6 +16,13 @@ dofile( minetest.get_modpath( sas_core.name ) .. "/sas_core.lua" )
 dofile( minetest.get_modpath( sas_core.name ) .. "/shear.lua" )
 ]]
 
+minetest.register_alias( 'default:rope_block', 'vines:rope_block' )
+minetest.register_alias( 'default:rope', 'vines:rope' )
+minetest.register_alias( 'default:rope_end', 'vines:rope_end' )
+minetest.register_alias( 'default:shears', 'vines:shears' )
+minetest.register_alias( 'sas_core:tool_shears', 'vines:shears' )
+
+
 minetest.register_alias( 'default:root', 'vines:root' )
 minetest.register_alias( 'default:root_middle', 'vines:root_middle' )
 minetest.register_alias( 'default:root_end', 'vines:root_end' )
